@@ -22,3 +22,4 @@ if set -q ZELLIJ
 else 
   zellij
 end
+nvm use 14
