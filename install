@@ -15,7 +15,7 @@ create_link alacritty.yml ~/.config/alacritty/alacritty.yml ~/.config/alacritty
 create_link config.fish ~/.config/fish/config.fish ~/.config/fish
 create_link gitconfig ~/.gitconfig  
 create_link vimrc  ~/.config/nvim/init.vim : ~/.config/nvim  
-
+create_link coc.vim ~/.config/nvim/coc.vim
 
 if [ "$(uname)" == "Linux" ]; then
     echo "Os is Linux"

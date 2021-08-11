@@ -2,7 +2,7 @@ set nu
 set nowrap
 syntax on
 set visualbell
-" set paste
+set paste
 " Encoding
 set encoding=utf-8
 
@@ -54,6 +54,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'mhinz/vim-rfc'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
+Plug 'junegunn/fzf'
 call plug#end()
 
 let g:gruvbox_italic=1 
@@ -61,4 +62,7 @@ colorscheme gruvbox
 :set bg=dark
 highlight Notmal guibg=none 
 
+source $HOME/.config/nvim/coc.vim
 
+set pyx=3
+nmap <C-P> :FZF<CR>
