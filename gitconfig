@@ -19,3 +19,7 @@
 	name = Doron Tsur
 [core] 
 	editor = vim 
+[init]
+	defaultBranch = master
+[pull]
+	rebase = false
