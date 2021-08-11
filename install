@@ -2,6 +2,7 @@
 
 function create_link() {
     if [ $# -eq 3 ]; then
+        echo "making folder" $3
         mkdir -p $3
     fi
     if [ -e "$2" ]; then
@@ -14,8 +15,10 @@ function create_link() {
 create_link alacritty.yml ~/.config/alacritty/alacritty.yml ~/.config/alacritty
 create_link config.fish ~/.config/fish/config.fish ~/.config/fish
 create_link gitconfig ~/.gitconfig  
-create_link vimrc  ~/.config/nvim/init.vim : ~/.config/nvim  
-create_link coc.vim ~/.config/nvim/coc.vim
+create_link vimrc  ~/.config/nvim/init.vim  ~/.config/nvim/vim-config   
+create_link ./vim-config/coc.vim ~/.config/nvim/vim-config/coc.vim
+create_link ./vim-config/plugins.vim ~/.config/nvim/vim-config/plugins.vim
+create_link ./vim-config/options.vim ~/.config/nvim/vim-config/options.vim
 
 if [ "$(uname)" == "Linux" ]; then
     echo "Os is Linux"
@@ -35,5 +38,6 @@ else
     brew install --cask alacritty
     brew install hugo
     brew install diff-so-fancy
+    brew install pyenv
 fi
 
