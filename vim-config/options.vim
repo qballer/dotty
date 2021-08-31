@@ -3,7 +3,7 @@ set nu
 set nowrap
 syntax on
 set visualbell
-set paste
+" set paste
 " Encoding
 set encoding=utf-8
 
@@ -24,8 +24,8 @@ set matchpairs+=<:> " use % to jump between pairs
 runtime! macros/matchit.vim
 set colorcolumn=80 
 " Move up/down editor lines
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 set hidden
 
