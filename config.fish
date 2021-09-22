@@ -1,6 +1,6 @@
 alias cat=bat
 alias ls=exa
-alias ll="la -la"
+alias ll="ls --group-directories-first -la"
 alias getenv="launchctl getenv"
 alias vim nvim
 alias k kubectl
@@ -23,3 +23,4 @@ else
   zellij
 end
 nvm use 14
+rvm default

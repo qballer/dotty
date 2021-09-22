@@ -1,3 +1,5 @@
+nnoremap <SPACE> <Nop>
+let mapleader=" "
 
 set nu
 set nowrap
