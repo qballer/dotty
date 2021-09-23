@@ -9,6 +9,7 @@ set PATH ~/bin $PATH
 set PATH /usr/local/bin $PATH
 set PATH /Users/doron.tsur/Library/Python/3.8/bin $PATH
 set PATH ~/.cargo/bin/ $PATH
+set PATH ~/.local/bin $PATH
 function lsp
   lsof -PiTCP -sTCP:LISTEN
 end
@@ -23,4 +24,5 @@ else
   zellij
 end
 nvm use 14
+rvm default
 rvm default

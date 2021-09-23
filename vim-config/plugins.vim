@@ -10,7 +10,7 @@ Plug 'lambdalisue/fern.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'LunarWatcher/auto-pairs'
 Plug 'puremourning/vimspector'
-
+Plug 'tpope/vim-vinegar'
 call plug#end()
 
 
