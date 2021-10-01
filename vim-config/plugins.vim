@@ -11,6 +11,14 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'LunarWatcher/auto-pairs'
 Plug 'puremourning/vimspector'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'mattn/emmet-vim'
+Plug 'stsewd/fzf-checkout.vim'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 call plug#end()
 
 
@@ -47,3 +55,13 @@ nmap <Leader>dk <Plug>VimspectorRestart
 nmap <Leader>dh <Plug>VimspectorStepOut
 nmap <Leader>dl <Plug>VimspectorStepInto
 nmap <Leader>dj <Plug>VimspectorStepOver
+
+nmap <Leader>gj :diffget //3<CR>
+nmap <Leader>gf :diffget //2<CR>
+nmap <Leader>gs :G<CR>
+
+let g:fzf_layout = { 'window': {'width': 0.8, 'height': 0.8} }
+let $FZF_DEFAULT_OPTS='--reverse'
+nnoremap <leader>gc :Git Checkout
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+

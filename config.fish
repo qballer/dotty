@@ -21,8 +21,8 @@ source ~/.config/fish/private.fish # stuff which should never go on a repo
 
 if set -q ZELLIJ   
 else 
-  zellij
+  zellij 
 end
 nvm use 14
 rvm default
-rvm default
+
