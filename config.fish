@@ -24,5 +24,4 @@ else
   zellij 
 end
 nvm use 14
-rvm default
 

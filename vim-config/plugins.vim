@@ -19,6 +19,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'mattn/emmet-vim'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'rust-lang/rust.vim'
+Plug 'ThePrimeagen/vim-be-good'
 call plug#end()
 
 

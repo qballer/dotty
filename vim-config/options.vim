@@ -55,3 +55,5 @@ let g:netrw_winsize=20
 autocmd FileType scss setl iskeyword+=@-@
 noremap <leader>rv :source ~/.config/nvim/init.vim<CR>
 echo "refreshed"
+set relativenumber
+
