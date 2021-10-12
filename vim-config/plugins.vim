@@ -1,3 +1,4 @@
+
 call plug#begin('~/.config/nvim/plugs')
 Plug 'gruvbox-community/gruvbox'
 Plug 'mhinz/vim-rfc'
@@ -16,14 +17,20 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'mattn/emmet-vim'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'rust-lang/rust.vim'
 Plug 'ThePrimeagen/vim-be-good'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'dag/vim-fish'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
-
+"hello" world
 let g:vimspector_enable_mappings = 'HUMAN'
  
 let g:gruvbox_italic=1 
@@ -67,3 +74,8 @@ let $FZF_DEFAULT_OPTS='--reverse'
 nnoremap <leader>gc :Git Checkout
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
+let g:airline#extensions#tabline#enabled = 1
+" tell gutentags to use ctags
+let g:gutentags_ctags_executable="/usr/local/bin/ctags"
+let g:gutentags_cache_dir="~/.vim/gutentags"
+let g:airline#extensions#gutentags#enabled = 1

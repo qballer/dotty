@@ -56,4 +56,4 @@ autocmd FileType scss setl iskeyword+=@-@
 noremap <leader>rv :source ~/.config/nvim/init.vim<CR>
 echo "refreshed"
 set relativenumber
-
+set clipboard=unnamed

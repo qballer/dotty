@@ -19,6 +19,7 @@
 	name = Doron Tsur
 [core] 
 	editor = vim 
+	excludesfile = /Users/dorontsur/.gitignore_global
 [init]
 	defaultBranch = master
 [pull]
