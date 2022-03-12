@@ -20,7 +20,13 @@
 [core] 
 	editor = vim 
 	excludesfile = /Users/dorontsur/.gitignore_global
+	eol = lf
+	autocrlf = input
 [init]
 	defaultBranch = master
 [pull]
 	rebase = false
+[alias]
+	co = checkout
+[url "git@github.com:"]
+	insteadOf = https://github.com/

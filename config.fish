@@ -9,13 +9,14 @@ set PATH ~/bin $PATH
 set PATH /usr/local/bin $PATH
 set PATH /Users/doron.tsur/Library/Python/3.8/bin $PATH
 set PATH ~/.cargo/bin/ $PATH
+set PATH ~/go/bin/ $PATH
 function lsp
   lsof -PiTCP -sTCP:LISTEN
 end
 pyenv init - | source
 set -Ux PYENV_ROOT $HOME/.pyenv
 set -gx HOST_IP (ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.0.0.1 | awk '{ print $2 }' | cut -f2 -d: | head -n1)
-
+set -gx GOPRIVATE "github.com/CloudinaryLtd/*"
 source ~/.config/fish/private.fish  #stuff which should never go on a repo
 
 # if set -q ZELLIJ
@@ -23,6 +24,10 @@ source ~/.config/fish/private.fish  #stuff which should never go on a repo
   # zellij
 # end
 nvm use 14
+
+
+# define golang
+set -xg GOBIN ~/go/bin
 #rvm use 3.0.2
 
 function pull-sub 
@@ -34,4 +39,7 @@ set EDITOR vim
 function gvm
   bass source ~/.gvm/scripts/gvm ';' gvm $argv
 end
-eval (minikube docker-env)
+
+set -xg CARGO_NET_GIT_FETCH_WITH_CLI true
+set -xg export AWS_PROFILE DevFullControl
+complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'

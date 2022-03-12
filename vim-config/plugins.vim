@@ -28,6 +28,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'dag/vim-fish'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'fatih/vim-go'
 call plug#end()
 
 "hello" world
