@@ -28,7 +28,6 @@ require'lspconfig'.solargraph.setup{
   end,
 }
 
-
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
   local cmp = require'cmp'
 
@@ -58,6 +57,4 @@ vim.opt.completeopt = {"menu", "menuone", "noselect"}
     })
   })
 
- -- Setup lspconfig.
-  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  
+require("trouble").setup {}
