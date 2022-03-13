@@ -19,6 +19,7 @@ create_link vimrc  ~/.config/nvim/init.vim  ~/.config/nvim/vim-config
 create_link ./vim-config/coc.vim ~/.config/nvim/vim-config/coc.vim
 create_link ./vim-config/plugins.vim ~/.config/nvim/vim-config/plugins.vim
 create_link ./vim-config/options.vim ~/.config/nvim/vim-config/options.vim
+create_link ./vim-config/lsp.lua ~/.config/nvim/vim-config/lsp.lua
 
 if [ "$(uname)" == "Linux" ]; then
     echo "Os is Linux"

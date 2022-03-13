@@ -2,7 +2,6 @@
 call plug#begin('~/.config/nvim/plugs')
 Plug 'gruvbox-community/gruvbox'
 Plug 'mhinz/vim-rfc'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
@@ -29,6 +28,7 @@ Plug 'dag/vim-fish'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'fatih/vim-go'
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 "hello" world
