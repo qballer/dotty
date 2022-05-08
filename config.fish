@@ -23,7 +23,7 @@ source ~/.config/fish/private.fish  #stuff which should never go on a repo
 # else
   # zellij
 # end
-nvm use 14
+nvm use 16
 
 
 # define golang
@@ -36,10 +36,8 @@ end
 set EDITOR vim
 # starship init fish | source
 
-function gvm
-  bass source ~/.gvm/scripts/gvm ';' gvm $argv
-end
-
 set -xg CARGO_NET_GIT_FETCH_WITH_CLI true
-set -xg export AWS_PROFILE DevFullControl
+#set -xg export AWS_PROFILE DevFullControl
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
+
+set -x MANPAGER "sh -c 'col -bx | cat -l man -p --theme 'Monokai Extended''"

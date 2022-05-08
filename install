@@ -30,6 +30,7 @@ else
     else
         echo fish is already installed
     fi
+    brew install eth-p/software/bat-extras.
     brew install kubernetes-cli
     brew install exa
     brew install bat

@@ -11,13 +11,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'LunarWatcher/auto-pairs'
 Plug 'puremourning/vimspector'
 Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mattn/emmet-vim'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'rust-lang/rust.vim'
