@@ -41,4 +41,4 @@ set -xg DOT_SOURCE ~/code/dotty
 #set -xg export AWS_PROFILE DevFullControl
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 
-set -x MANPAGER "batman"
+starship init fish | source

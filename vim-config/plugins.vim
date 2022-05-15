@@ -15,6 +15,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'rmehri01/onenord.nvim', { 'branch': 'main' }
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'rust-lang/rust.vim'
@@ -35,6 +36,7 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'mfussenegger/nvim-dap'
 call plug#end()
 
 "hello" world

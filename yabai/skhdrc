@@ -5,10 +5,10 @@ ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"; 
 ctrl + alt + cmd - s : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.spacebar"
 
 ctrl + shift - 0x24  : open -na /Applications/Alacritty.app
-ctrl + shift - c     : open -na /Applications/Google\ Chrome.app
+#ctrl + shift - c     : open -na /Applications/Google\ Chrome.app
 ctrl + shift - k     : open -na /Applications/Forklift.app
 ctrl + shift - q     : yabai -m window --close
-ctrl + shift - v     : open -na /Applications/Visual\ Studio\ Code.app
+#ctrl + shift - v     : open -na /Applications/Visual\ Studio\ Code.app
 
 ############################# Mode definitions ##################################
 :: default           : ~/.config/skhd/mode_controller.sh default # default mode: normal
