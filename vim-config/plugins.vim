@@ -37,6 +37,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'mfussenegger/nvim-dap'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 call plug#end()
 
 "hello" world
