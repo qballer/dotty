@@ -1,4 +1,5 @@
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local luasnip = require('luasnip')
 
 require'lspconfig'.gopls.setup{
   capabilities = capabilities,
@@ -30,12 +31,15 @@ require'lspconfig'.solargraph.setup{
 
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
   local cmp = require'cmp'
-
+  local has_words_before = function()
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  end
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        luasnip.lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
     

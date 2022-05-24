@@ -178,7 +178,7 @@ colors:
     cyan:    '0x46d9ff'
     white:   '0xbbc2cf'
 
-background_opacity: 1.0
+window.opacity: 1.0
 
 # Mouse bindings
 #

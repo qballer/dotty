@@ -42,3 +42,4 @@ set -xg DOT_SOURCE ~/code/dotty
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 
 starship init fish | source
+alias ghome="ssh home@192.168.0.157"
