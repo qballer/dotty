@@ -247,8 +247,7 @@ local servers = {
   'pyright',
   'tsserver',
   'gopls',
-  'golangci_lint_ls',
-  'lua',
+  'golangci_lint_ls'
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -257,17 +256,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-lspconfig['lua'].setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    },
-}
 -- Example custom server
 -- Make runtime files discoverable to the server
 local runtime_path = vim.split(package.path, ';')
