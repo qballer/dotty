@@ -15,11 +15,9 @@ function create_link() {
 create_link alacritty.yml ~/.config/alacritty/alacritty.yml ~/.config/alacritty
 create_link config.fish ~/.config/fish/config.fish ~/.config/fish
 create_link gitconfig ~/.gitconfig  
-create_link vimrc  ~/.config/nvim/init.vim  ~/.config/nvim/vim-config   
-create_link ./vim-config/coc.vim ~/.config/nvim/vim-config/coc.vim
 create_link ./vim-config/plugins.vim ~/.config/nvim/vim-config/plugins.vim
 create_link ./vim-config/options.vim ~/.config/nvim/vim-config/options.vim
-create_link ./vim-config/basic.lua ~/.config/nvim/lua/basic.lua
+create_link ./vim/init.lua ~/.config/nvim/init.lua
 
 if [ "$(uname)" == "Linux" ]; then
     echo "Os is Linux"
