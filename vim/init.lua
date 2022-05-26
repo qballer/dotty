@@ -33,8 +33,6 @@ require('packer').startup(function(use)
         "neovim/nvim-lspconfig",
         config = function()
             require("nvim-lsp-installer").setup {}
-            local lspconfig = require("lspconfig")
-            lspconfig.sumneko_lua.setup {}
         end
     }
 }
@@ -42,8 +40,10 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'kdheepak/lazygit.nvim'
 end)
 
+vim.api.nvim_set_option("clipboard", "unnamed")
 --Set highlight on search
 vim.o.hlsearch = false
 
@@ -139,6 +139,7 @@ require('telescope').setup {
 
 -- Enable telescope fzf native
 require('telescope').load_extension 'fzf'
+require('telescope').load_extension 'lazygit'
 
 --Add leader shortcuts
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers)
@@ -247,7 +248,8 @@ local servers = {
   'pyright',
   'tsserver',
   'gopls',
-  'golangci_lint_ls'
+  'golangci_lint_ls',
+  'solargraph'
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
