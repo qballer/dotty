@@ -1,6 +1,6 @@
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-
+local util = require('lspconfig.util')
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
@@ -276,10 +276,10 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local servers = {
   'clangd',
   'pyright',
-  'tsserver',
   'gopls',
   'golangci_lint_ls',
-  'solargraph'
+  'solargraph',
+  'denols'
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -287,6 +287,12 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+require('lspconfig').tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = util.root_pattern('package.json'),
+}
 
 local on_attach_rust = function(client, buf)
     on_attach(client, buf)
@@ -331,7 +337,8 @@ lspconfig.sumneko_lua.setup {
         -- Get the language server to recognize the `vim` global
         globals = {
           'vim',
-          'expand'
+          'expand',
+          'util',
         },
       },
       workspace = {
@@ -360,7 +367,7 @@ cmp.setup {
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-Tab>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -389,16 +396,9 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-vim.g.nvim_tree_auto_ignore_ft = 'startify'
-vim.g.nvim_tree_icons = {
-  default = '',
-  symlink = '',
-  git = {unstaged = "", staged = "", unmerged = "", renamed = "", untracked = "", deleted = "✖", ignored = ""},
-  folder = {default = "", open = "", empty = "", empty_open = "", symlink = ""}
-}
-
+require'nvim-web-devicons'.setup{}
 require'nvim-tree'.setup {
-  disable_netrw       = true,
+  disable_netrw       = false,
   open_on_tab         = false,
   hijack_cursor       = false,
   diagnostics = {
