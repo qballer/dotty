@@ -55,6 +55,7 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use 'kdheepak/lazygit.nvim'
+  use 'editorconfig/editorconfig-vim'
   use {
   "folke/which-key.nvim",
   config = function()
