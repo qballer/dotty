@@ -8,12 +8,26 @@ end
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', { command = 'source <afile> | PackerCompile', group = packer_group, pattern = 'init.lua' })
 
+-- vim.g.minimap_width = 10
+ vim.g.minimap_auto_start = 1
+-- vim.g.minimap_auto_start_win_enter = 0
+-- vim.g.minimap_highlight_range = 1
+
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'ludovicchabant/vim-gutentags' -- Automatic tags management
+  use 'kyazdani42/nvim-web-devicons'
+  use 'wfxr/minimap.vim'
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
@@ -41,13 +55,23 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use 'kdheepak/lazygit.nvim'
+  use {
+  "folke/which-key.nvim",
+  config = function()
+    require("which-key").setup {
+
+    }
+  end
+}
 end)
+
+-- require('wfxr/minimap.vim').setup{}
 
 vim.api.nvim_set_option("clipboard", "unnamed")
 --Set highlight on search
 vim.o.hlsearch = false
 
---Make line numbers default
+--Make line numbers default:
 vim.wo.number = true
 
 --Enable mouse mode
@@ -85,6 +109,9 @@ require('lualine').setup {
     section_separators = '',
   },
 }
+
+-- enable nvim tree
+require('nvim-tree').setup{}
 
 --Enable Comment.nvim
 require('Comment').setup()
@@ -209,6 +236,10 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
+vim.keymap.set('n', '<leader>y', ':let @+=expand("%") . ":" .line(".")<cr>', {
+  noremap=true,
+  desc = 'yank file path and line number'
+})
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -244,7 +275,6 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- Enable the following language servers
 local servers = {
   'clangd',
-  'rust_analyzer',
   'pyright',
   'tsserver',
   'gopls',
@@ -257,6 +287,28 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+local on_attach_rust = function(client, buf)
+    on_attach(client, buf)
+end
+
+require('lspconfig').rust_analyzer.setup({
+    on_attach=on_attach_rust,
+    settings = {
+        ["rust-analyzer"] = {
+            assist = {
+                importGranularity = "module",
+                importPrefix = "self",
+            },
+            cargo = {
+                loadOutDirsFromCheck = true
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
+})
 
 -- Example custom server
 -- Make runtime files discoverable to the server
@@ -277,7 +329,10 @@ lspconfig.sumneko_lua.setup {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
+        globals = {
+          'vim',
+          'expand'
+        },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -334,4 +389,48 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+vim.g.nvim_tree_auto_ignore_ft = 'startify'
+vim.g.nvim_tree_icons = {
+  default = '',
+  symlink = '',
+  git = {unstaged = "", staged = "", unmerged = "", renamed = "", untracked = "", deleted = "✖", ignored = ""},
+  folder = {default = "", open = "", empty = "", empty_open = "", symlink = ""}
+}
+
+require'nvim-tree'.setup {
+  disable_netrw       = true,
+  open_on_tab         = false,
+  hijack_cursor       = false,
+  diagnostics = {
+    enable = false,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    }
+  },
+  update_focused_file = {
+    enable      = true,
+    update_cwd  = true,
+    ignore_list = {}
+  },
+  system_open = {
+    cmd  = nil,
+    args = {}
+  },
+
+  view = {
+    width = 50,
+    height = 30,
+    side = 'left',
+    mappings = {
+      custom_only = false,
+      list = {}
+    }
+  }
+}
+
+
 -- vim: ts=2 sts=2 sw=2 et
+--
