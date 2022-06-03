@@ -19,6 +19,12 @@ vim.g.minimap_auto_start = 1
 -- vim.g.minimap_highlight_range = 1
 
 require('packer').startup(function(use)
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function() vim.fn["mkdp#util#install"]() end,
+	})
+
+	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 	use 'wbthomason/packer.nvim' -- Package manager
 	use 'tpope/vim-fugitive' -- Git commands in nvim
 	use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
@@ -83,7 +89,13 @@ require('packer').startup(function(use)
 			require "octo".setup()
 		end
 	}
+	use 'tpope/vim-vinegar'
+	use 'dag/vim-fish'
+	use 'mfussenegger/nvim-dap'
+	use 'leoluz/nvim-dap-go'
 end)
+
+require('dap-go').setup{}
 
 -- require('wfxr/minimap.vim').setup{}
 

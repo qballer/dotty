@@ -1,4 +1,3 @@
-alias cat=bat
 alias ls=exa
 alias ll="ls --group-directories-first -la"
 alias getenv="launchctl getenv"
@@ -7,7 +6,7 @@ alias k kubectl
 alias p python3
 set PATH ~/bin $PATH
 set PATH ~/.deno/bin $PATH
-
+#set PATH ~/nsccli/bin
 set PATH /usr/local/bin $PATH
 set PATH /Users/doron.tsur/Library/Python/3.8/bin $PATH
 set PATH ~/.cargo/bin/ $PATH
@@ -21,11 +20,11 @@ set -gx HOST_IP (ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.
 set -gx GOPRIVATE "github.com/CloudinaryLtd/*"
 #source ~/.config/fish/private.fish  #stuff which should never go on a repo
 
-# if set -q ZELLIJ
-# else
-  # zellij
-# end
-nvm use 16
+if set -q ZELLIJ
+else
+ zellij
+end
+nvm use 18
 
 
 # define golang
@@ -45,3 +44,4 @@ complete --command aws --no-files --arguments '(begin; set --local --export COMP
 
 starship init fish | source
 alias ghome="ssh home@192.168.0.157"
+
