@@ -19,12 +19,6 @@ vim.g.minimap_auto_start = 1
 -- vim.g.minimap_highlight_range = 1
 
 require('packer').startup(function(use)
-	use({
-		"iamcco/markdown-preview.nvim",
-		run = function() vim.fn["mkdp#util#install"]() end,
-	})
-
-	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 	use 'wbthomason/packer.nvim' -- Package manager
 	use 'tpope/vim-fugitive' -- Git commands in nvim
 	use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
@@ -91,12 +85,48 @@ require('packer').startup(function(use)
 	}
 	use 'tpope/vim-vinegar'
 	use 'dag/vim-fish'
+
 	use 'mfussenegger/nvim-dap'
 	use 'leoluz/nvim-dap-go'
+	use 'rcarriga/nvim-dap-ui'
+	use 'theHamsta/nvim-dap-virtual-text'
+	use 'nvim-telescope/telescope-dap.nvim'
+	-- markdownm
+        use {"ellisonleao/glow.nvim", branch = 'main'}
 end)
 
-require('dap-go').setup{}
 
+
+
+vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
+vim.keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")
+vim.keymap.set("n", "<F2>", ":lua require'dap'.step_into()<CR>")
+vim.keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>")
+vim.keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
+vim.keymap.set("n", "<leader>dt", ":lua require'dap-go'.debug_test()<CR>")
+
+require("nvim-dap-virtual-text").setup()
+require('dap-go').setup()
+require("dapui").setup()
+
+--local lspconfig = require'lspconfig'
+--local configs = require 'lspconfig/configs'
+--if not configs.golangcilsp then
+-- 	configs.golangcilsp = {
+--		default_config = {
+--			cmd = {'golangci-lint-langserver'},
+--            -- make rootdir .golangcilint with config for linter
+--			root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
+--			init_options = {
+--					command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json" };
+--			}
+--		};
+--	}
+--end
+--
 -- require('wfxr/minimap.vim').setup{}
 
 vim.api.nvim_set_option("clipboard", "unnamed")
