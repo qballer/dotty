@@ -1,3 +1,8 @@
+--Remap space as leader key
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- Install packer
 
 package.path = package.path .. ";./?.lua"
@@ -176,11 +181,6 @@ require('lualine').setup {
 --Enable Comment.nvim
 require('Comment').setup()
 
---Remap space as leader key
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 --Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -229,6 +229,7 @@ require('telescope').load_extension 'fzf'
 require('telescope').load_extension 'lazygit'
 
 --Add leader shortcuts
+
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers)
 vim.keymap.set('n', '<leader>sf', function()
 	require('telescope.builtin').find_files { previewer = false }
