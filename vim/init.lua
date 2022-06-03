@@ -1,5 +1,9 @@
--- Install packer
+--Remap space as leader key
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
+-- Install packer
 package.path = package.path .. ";./?.lua"
 require('formatter')
 
@@ -175,11 +179,6 @@ require('lualine').setup {
 
 --Enable Comment.nvim
 require('Comment').setup()
-
---Remap space as leader key
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 --Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
