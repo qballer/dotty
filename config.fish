@@ -20,9 +20,11 @@ set -gx HOST_IP (ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.
 set -gx GOPRIVATE "github.com/CloudinaryLtd/*"
 #source ~/.config/fish/private.fish  #stuff which should never go on a repo
 
+set -gx EDITOR /usr/local/bin/nvim
+
 if set -q ZELLIJ
 else
- zellij
+ zellij --layout compact
 end
 nvm use 18
 
@@ -34,7 +36,6 @@ set -xg GOBIN ~/go/bin
 function pull-sub 
   bass "find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin \;"
 end
-set EDITOR vim
 # starship init fish | source
 
 set -xg CARGO_NET_GIT_FETCH_WITH_CLI true

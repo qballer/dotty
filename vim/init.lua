@@ -96,11 +96,17 @@ require('packer').startup(function(use)
 	use 'theHamsta/nvim-dap-virtual-text'
 	use 'nvim-telescope/telescope-dap.nvim'
 	-- markdownm
-        use {"ellisonleao/glow.nvim", branch = 'main'}
+	use { "ellisonleao/glow.nvim", branch = 'main' }
+	use { 'nvim-orgmode/orgmode' }
 end)
 
 
 
+require('orgmode').setup_ts_grammar()
+require('orgmode').setup({
+	org_agenda_files = { '~/Dropbox/org/*', '~/code/notes/org/**/*' },
+	org_default_notes_file = { '~/Dropbox/org/refile.org' },
+})
 
 vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
 vim.keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")
@@ -248,6 +254,7 @@ require('nvim-treesitter.configs').setup {
 	highlight = {
 		enable = true, -- false will disable the whole extension
 	},
+	ensure_installed = { "c", "lua", "rust", "go", "typescript", "ruby", "css", "python", "org" },
 	incremental_selection = {
 		enable = true,
 		keymaps = {
