@@ -1,12 +1,13 @@
 --Remap space as leader key
+--
+
+
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Install packer
 package.path = package.path .. ";./?.lua"
-require('formatter')
-
 
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local util = require('lspconfig.util')
@@ -97,17 +98,24 @@ require('packer').startup(function(use)
 	use 'nvim-telescope/telescope-dap.nvim'
 	-- markdownm
 	use { "ellisonleao/glow.nvim", branch = 'main' }
-	use { 'nvim-orgmode/orgmode' }
+	use { 'nvim-orgmode/orgmode', config = function()
+		require('orgmode').setup{
+			org_agenda_files = {'~/code/private/notes/org/**/*'},
+			org_default_notes_file = '~/code/private/notes/org/refile.org',
+		}
+	end
+	}
 end)
 
 
 
+require('formatter')
 require('orgmode').setup_ts_grammar()
-require('orgmode').setup({
-	org_agenda_files = { '~/Dropbox/org/*', '~/code/notes/org/**/*' },
-	org_default_notes_file = { '~/Dropbox/org/refile.org' },
-})
-
+--require('orgmode').setup({
+--	org_agenda_files = { '~/Dropbox/org/*', '~/code/notes/org/**/*' },
+--	org_default_notes_file = { '~/Dropbox/org/refile.org' },
+--})
+--
 vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
 vim.keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")
 vim.keymap.set("n", "<F2>", ":lua require'dap'.step_into()<CR>")
@@ -121,23 +129,6 @@ vim.keymap.set("n", "<leader>dt", ":lua require'dap-go'.debug_test()<CR>")
 require("nvim-dap-virtual-text").setup()
 require('dap-go').setup()
 require("dapui").setup()
-
---local lspconfig = require'lspconfig'
---local configs = require 'lspconfig/configs'
---if not configs.golangcilsp then
--- 	configs.golangcilsp = {
---		default_config = {
---			cmd = {'golangci-lint-langserver'},
---            -- make rootdir .golangcilint with config for linter
---			root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
---			init_options = {
---					command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json" };
---			}
---		};
---	}
---end
---
--- require('wfxr/minimap.vim').setup{}
 
 vim.api.nvim_set_option("clipboard", "unnamed")
 --Set highlight on search
@@ -182,6 +173,7 @@ require('lualine').setup {
 	},
 }
 
+--require('nvim-tree').setup{}
 
 --Enable Comment.nvim
 require('Comment').setup()
@@ -253,8 +245,9 @@ vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles)
 require('nvim-treesitter.configs').setup {
 	highlight = {
 		enable = true, -- false will disable the whole extension
+		additional_vim_regex_highlighting = { 'org' },
 	},
-	ensure_installed = { "c", "lua", "rust", "go", "typescript", "ruby", "css", "python", "org" },
+	ensure_installed = { "c", "lua", "rust", "go", "typescript", "ruby", "css", "python", "org", "zig", "hcl" },
 	incremental_selection = {
 		enable = true,
 		keymaps = {
@@ -462,6 +455,7 @@ cmp.setup {
 	sources = {
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
+		{ name = 'orgmode' }
 	},
 }
 
