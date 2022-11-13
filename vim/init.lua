@@ -67,8 +67,7 @@ require('packer').startup(function(use)
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'L3MON4D3/LuaSnip' -- Snippets plugin
 	use 'kdheepak/lazygit.nvim'
-	use 'editorconfig/editorconfig-vim'
-	use 'github/copilot.vim'
+	use 'gpanders/editorconfig.nvim'
 	use {
 		"folke/which-key.nvim",
 		config = function()
@@ -98,24 +97,12 @@ require('packer').startup(function(use)
 	use 'nvim-telescope/telescope-dap.nvim'
 	-- markdownm
 	use { "ellisonleao/glow.nvim", branch = 'main' }
-	use { 'nvim-orgmode/orgmode', config = function()
-		require('orgmode').setup{
-			org_agenda_files = {'~/code/private/notes/org/**/*'},
-			org_default_notes_file = '~/code/private/notes/org/refile.org',
-		}
-	end
-	}
 end)
 
 
 
 require('formatter')
-require('orgmode').setup_ts_grammar()
---require('orgmode').setup({
---	org_agenda_files = { '~/Dropbox/org/*', '~/code/notes/org/**/*' },
---	org_default_notes_file = { '~/Dropbox/org/refile.org' },
---})
---
+
 vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
 vim.keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")
 vim.keymap.set("n", "<F2>", ":lua require'dap'.step_into()<CR>")
@@ -136,6 +123,9 @@ vim.o.hlsearch = false
 
 --Make line numbers default:
 vim.wo.number = true
+
+--no wrao
+vim.wo.wrap = false
 
 --Enable mouse mode
 vim.o.mouse = 'a'
@@ -338,7 +328,7 @@ local servers = {
 	'gopls',
 	'golangci_lint_ls',
 	'solargraph',
-	'denols',
+--	'denols',
 	'html',
 	'cssls'
 }
