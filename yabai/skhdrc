@@ -4,8 +4,8 @@ ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"; 
                        launchctl kickstart -k "gui/${UID}/homebrew.mxcl.spacebar"
 ctrl + alt + cmd - s : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.spacebar"
 
-ctrl + shift - 0x24  : open -na /Applications/Alacritty.app
-#ctrl + shift - c     : open -na /Applications/Google\ Chrome.app
+ctrl + shift - 0x24  : open -na /Applications/iTerm.app
+ctrl + shift - c     : open -na /Applications/Google\ Chrome.app
 ctrl + shift - k     : open -na /Applications/Forklift.app
 ctrl + shift - q     : yabai -m window --close
 #ctrl + shift - v     : open -na /Applications/Visual\ Studio\ Code.app
@@ -58,7 +58,7 @@ ctrl + shift - space  : yabai -m window --toggle zoom-fullscreen
 shift + alt - up      : yabai -m window --focus stack.prev || \
                         yabai -m window --focus stack.last
 shift + alt - down    : yabai -m window --focus stack.next || \
-                        yabai -m window --focus stack.first
+                        yabai -m window --focus stack.pirst
 
 # vi like key bindings
 alt + shift - k       : yabai -m window --focus stack.prev || \

@@ -10,7 +10,7 @@ vim.g.maplocalleader = ' '
 package.path = package.path .. ";./?.lua"
 
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-local util = require('lspconfig.util')
+--local util = require('lspconfig.util')
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
@@ -101,7 +101,7 @@ end)
 
 
 
-require('formatter')
+--require('formatter')
 
 vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
 vim.keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")
@@ -339,11 +339,11 @@ for _, lsp in ipairs(servers) do
 	}
 end
 
-require('lspconfig').tsserver.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-	root_dir = util.root_pattern('package.json'),
-}
+--require('lspconfig').tsserver.setup {
+--	on_attach = on_attach,
+--	capabilities = capabilities,
+--	root_dir = util.root_pattern('package.json'),
+--}
 
 local on_attach_rust = function(client, buf)
 	on_attach(client, buf)
