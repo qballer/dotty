@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-#eval "$(fnm env --use-on-cd)"
+eval "$(fnm env --use-on-cd)"
 
 alias ls=exa
 alias ll="ls --group-directories-first -la"

@@ -42,5 +42,4 @@ else
     brew install pyenv
 fi
 
-echo "source ~/code/dotty/custom"
 
