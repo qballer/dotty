@@ -4,9 +4,10 @@ eval $(/opt/homebrew/bin/brew shellenv)
 alias ls=exa
 alias ll="ls --group-directories-first -la"
 alias getenv="launchctl getenv"
-alias vim=nvim
+alias vim=lvim
 alias k=kubectl
 alias p=python3
+alias cf=codefresh
 
 PATH="~/bin:$PATH"
 PATH="~/.deno/bin:$PATH"
@@ -25,7 +26,7 @@ HOST_IP=$(ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.0.0.1 |
 
 GOPRIVATE="github.com/honeybook/*"
 
-export EDITOR=nvim
+export EDITOR=hx
 
 # define golang
 export GOBIN="~/go/bin"
@@ -38,3 +39,26 @@ alias ghome="ssh home@192.168.0.157"
 
 eval "$(starship init zsh)"
 eval "$(zellij setup --generate-auto-start zsh)"
+eval "$(fnm env --use-on-cd)"
+
+###-begin-codefresh-completions-###
+#
+# codefresh command completion script
+#
+# Installation: codefresh completion zsh >> ~/.zshrc
+#
+_codefresh_completions()
+{
+    type_list=($(codefresh --impl-zsh-file-dir --get-yargs-completions "${words[@]}"))
+
+    if [[ ${type_list[1]} == '__files_completion__' ]]; then
+        compadd -- "${type_list[@]:1}"
+    else
+        compadd -- "${type_list[@]}"
+    fi
+
+    return 0
+}
+compdef _codefresh_completions codefresh
+###-end-codefresh-completions-###
+
