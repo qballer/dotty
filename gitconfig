@@ -1,5 +1,5 @@
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta --dark
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -19,7 +19,7 @@
 	email = qballer@gmail.com
 	name = Doron Tsur
 [core] 
-	editor = vim 
+	editor = nvim 
 	excludesfile = /Users/dorontsur/.gitignore_global
 	eol = lf
 	autocrlf = input
@@ -35,3 +35,7 @@
 	insteadOf = https://github.com/
 [interactive]
 	diffFilter = diff-so-fancy --patch
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
+	markIgnoredLines = true
+	markUnblamableLines = true
