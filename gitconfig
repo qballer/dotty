@@ -19,7 +19,7 @@
 	email = qballer@gmail.com
 	name = Doron Tsur
 [core] 
-	editor = nvim 
+	editor = vim 
 	excludesfile = /Users/dorontsur/.gitignore_global
 	eol = lf
 	autocrlf = input
